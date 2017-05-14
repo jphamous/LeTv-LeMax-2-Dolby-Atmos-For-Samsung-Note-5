@@ -1,0 +1,15 @@
+#!/system/bin/sh
+#
+# ARISE Sound Systems™
+#
+# Permissive Selinux script
+
+setenforce 0
+
+LOG_FILE=/data/local/permissive_run.log;
+
+if [ -e "/data/local/permissive_run.log" ]; then
+  rm /data/local/permissive_run.log
+fi
+
+echo "permissive script has run successfully $(date +"%m-%d-%Y %H:%M:%S")" | tee -a $LOG_FILE;

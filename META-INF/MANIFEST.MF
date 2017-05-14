@@ -1,0 +1,69 @@
+Manifest-Version: 1.0
+Created-By: 1.0 (Android SignApk)
+
+Name: META-INF/com/google/android/update-binary
+SHA1-Digest: U+WNIWUei/UcJHtSuZMVC7rxLFc=
+
+Name: META-INF/com/google/android/updater-script
+SHA1-Digest: e7YEsm7ngjs+CUFtwfeve55Ok9w=
+
+Name: atmos/priv-app/AxUI/AxUI.apk
+SHA1-Digest: XPjfHUu9sUFFcVKa5zh6gTa1D9k=
+
+Name: atmos/lib/libdlbdapstorage.so
+SHA1-Digest: ETmiLqfOnWSNeH99LUmJVDhep4E=
+
+Name: atmos/su.d/permissive
+SHA1-Digest: rRy0Gs5gw9pC+l8PG4/ifuNMo28=
+
+Name: atmos/priv-app/Ax/Ax.apk
+SHA1-Digest: cU6WVQZAvM7QHdAsROAbZjyf/iM=
+
+Name: customize/etc/audio_effects.conf
+SHA1-Digest: 9dY0Tn/mr1+PmcWkDEC9Zj6NRAw=
+
+Name: atmos/Atmos_Version.prop
+SHA1-Digest: HLIaM/cvC1680XBno5jrHfGtJ6g=
+
+Name: customize/lib64/libhwdaphal.so
+SHA1-Digest: DIOq+eWOBrTCi1h5cq4fsEte8oc=
+
+Name: customize/etc/audio_offload_effects.conf
+SHA1-Digest: y4A3UVElnYOFD3u5IU1ZEdfzN3k=
+
+Name: customize/etc/qc/htc_audio_effects.conf
+SHA1-Digest: VpHIJdxxh3bSo1Z340ccCmRcdgE=
+
+Name: customize/etc/audio_effects_vendor.conf
+SHA1-Digest: FRwr7HxNXfTSyvyvLIiL0PTGxwc=
+
+Name: customize/etc/qc/audio_effects_vendor.conf
+SHA1-Digest: Ap1gRn0onooI5d7HtEnKAkwl4J8=
+
+Name: customize/lib/libhwdaphal.so
+SHA1-Digest: 1pJWxb+5hwqQtHjt9ectOOfoDMY=
+
+Name: customize/vendor/etc/audio_effects.conf
+SHA1-Digest: L+0f4zqbgXi62mr2XAIq31KJm9o=
+
+Name: customize/etc/stock_audio_effects.conf
+SHA1-Digest: mhINDbDolbBeuFUZX0VFTeltf1k=
+
+Name: customize/etc/qc/audio_effects.conf
+SHA1-Digest: 2YmaMxMRE6LH4OcdRsCBo5gRRhQ=
+
+Name: customize/etc/qc/audio_offload_effects.conf
+SHA1-Digest: tJbrccm9jOB589RKFodwIfPc8ow=
+
+Name: atmos/lib/soundfx/libswdax.so
+SHA1-Digest: NzDzIsqF4ZyiCBr/k5p1IaZ377A=
+
+Name: atmos/lib/libstagefright_soft_ddpdec.so
+SHA1-Digest: iQR7jkLJpBThGUr1UiRTltUZsjc=
+
+Name: customize/etc/qc/htc_vendor_audio_effects.conf
+SHA1-Digest: 7y6+ut++iVKxKWpIcTsqtBThZL0=
+
+Name: atmos/etc/dolby/dax-default.xml
+SHA1-Digest: CMw4rRXeMAv3fjTyYdLMdxbZvjg=
+

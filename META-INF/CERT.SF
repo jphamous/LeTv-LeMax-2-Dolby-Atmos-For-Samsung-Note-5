@@ -1,0 +1,70 @@
+Signature-Version: 1.0
+Created-By: 1.0 (Android SignApk)
+SHA1-Digest-Manifest: QS11QeEGquYb+DR4cJ2mmHKSY4o=
+
+Name: META-INF/com/google/android/update-binary
+SHA1-Digest: 4uY6znsItSa/6iOJb/h7GsiXZpk=
+
+Name: META-INF/com/google/android/updater-script
+SHA1-Digest: tLgBaUmk0ImSlk+t55uvNZlijaA=
+
+Name: atmos/priv-app/AxUI/AxUI.apk
+SHA1-Digest: fYx5DkZckCsM5ZJTLoLQhuP1s/s=
+
+Name: atmos/lib/libdlbdapstorage.so
+SHA1-Digest: loOztJP1kFvk0H3ylVgZwwRZnjc=
+
+Name: atmos/su.d/permissive
+SHA1-Digest: dh/1A1hFGEnqDYhe82JgbVBRH3M=
+
+Name: atmos/priv-app/Ax/Ax.apk
+SHA1-Digest: Da6YnmqQHgIXm0xfV7yFMLAcNTI=
+
+Name: customize/etc/audio_effects.conf
+SHA1-Digest: dXRG9TzwbmlwXtGaN0HskZKki2s=
+
+Name: atmos/Atmos_Version.prop
+SHA1-Digest: fC0BNmXSATCqi4OBkEjYZDzgJSw=
+
+Name: customize/lib64/libhwdaphal.so
+SHA1-Digest: nQuTXIc6v7OchNY/oCqo34DRLOI=
+
+Name: customize/etc/audio_offload_effects.conf
+SHA1-Digest: VBpsmv0b9eM8V9uB2zS+4Zps+GY=
+
+Name: customize/etc/qc/htc_audio_effects.conf
+SHA1-Digest: FFcfkt+CNhu73O2bM9gcgiuN8+U=
+
+Name: customize/etc/audio_effects_vendor.conf
+SHA1-Digest: ueT9YHvwfn/Ebny8uH6aHOlC52c=
+
+Name: customize/etc/qc/audio_effects_vendor.conf
+SHA1-Digest: AW9NFUWIUs8ZpHPcb+Yd8VKoOqQ=
+
+Name: customize/lib/libhwdaphal.so
+SHA1-Digest: TJH/uroLv1Hdt9P4YoM9MMHq1yw=
+
+Name: customize/vendor/etc/audio_effects.conf
+SHA1-Digest: UxNVAjJf37Cch2UCEaIbqaFGJWk=
+
+Name: customize/etc/stock_audio_effects.conf
+SHA1-Digest: n53hBC1v10OyyIXlagEF0yfP64U=
+
+Name: customize/etc/qc/audio_effects.conf
+SHA1-Digest: oAoKUk2WPj++EWjrQsdSD3wZ5cM=
+
+Name: customize/etc/qc/audio_offload_effects.conf
+SHA1-Digest: F/pYl/tQzsUWARAjwr/tXRY6Zc0=
+
+Name: atmos/lib/soundfx/libswdax.so
+SHA1-Digest: t01w3CWatTzY+Mp8YzqWRuiekzg=
+
+Name: atmos/lib/libstagefright_soft_ddpdec.so
+SHA1-Digest: u9AanWzA3EuRPgH63XUUB/pxcDo=
+
+Name: customize/etc/qc/htc_vendor_audio_effects.conf
+SHA1-Digest: v9vC0mb25YUCZ6F8qES9V2DEUoA=
+
+Name: atmos/etc/dolby/dax-default.xml
+SHA1-Digest: lBNNYM1bEKjWf5QmQ8aOTzMitCU=
+

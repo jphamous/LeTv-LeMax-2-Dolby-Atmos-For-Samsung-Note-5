@@ -1,0 +1,230 @@
+#!/sbin/sh
+#
+# ARISE Sound Systems™ @XDA Developers
+#
+# Dolby Atmos™ GUI Add-On for Deuteronomy™
+#
+# Minimum Android OS = Marshmallow
+#
+# Selinux will be forced Permissive
+
+umount /system
+mount /system
+
+OUTFD=/proc/self/fd/$2;
+ZIPFILE="$3";
+DIR=$(dirname "$ZIPFILE");
+ZIP=$3
+LIB64=/system/lib64
+QCOM=/system/lib/soundfx/libqcomvisualizer.so
+API=$(cat /system/build.prop | grep "ro.build.version.sdk=" | dd bs=1 skip=21 count=2)
+ANGL=$(cat /system/build.prop | grep "ro.product.name=angler")
+BULL=$(cat /system/build.prop | grep "ro.product.name=bullhead")
+FLOU=$(cat /system/build.prop | grep "ro.product.name=flounder")
+
+ui_print() { echo -e "ui_print $1\nui_print" > $OUTFD; }
+
+abort() { ui_print "$*"; exit 1; }
+
+set_perm() {
+ if [ -e $1 ]; then
+  chown $2:$3 $1 || exit 1
+  chmod $4 $1 || exit 1
+  if [ "$5" ]; then
+  chcon $5 $1 2>/dev/null
+  else
+  chcon 'u:object_r:system_file:s0' $1 2>/dev/null
+  fi
+ fi
+}
+
+set_perm_recursive() {
+  find $1 -type d 2>/dev/null | while read dir; do
+    set_perm $dir $2 $3 $4 $6
+  done
+  find $1 -type f 2>/dev/null | while read file; do
+    set_perm $file $2 $3 $5 $6
+  done
+}
+
+if [ "$API" -lt "23" ]; then
+  ui_print " "
+  ui_print " "
+  ui_print "Marshmallow or Nougat is required!"
+  ui_print " "
+  ui_print " "
+  umount /system
+  abort
+  exit 1
+fi
+
+if [ "$ANGL" ] || [ "$BULL" ] || [ "$FLOU" ]; then
+  umount /vendor
+  mount /vendor
+fi
+
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print "                    Dolby Atmos™"
+ui_print "                  for Deuteronomy™"
+ui_print " "
+ui_print "          courtesy of ahrion @XDA Developers"
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+
+sleep 3
+
+rm -rf /system/priv-app/Ax
+rm -rf /system/priv-app/AxUI
+rm -rf /system/priv-app/As
+rm -rf /system/priv-app/AsUI
+rm -rf /system/app/Ax
+rm -rf /system/app/AxUI
+rm -rf /system/app/As
+rm -rf /system/app/AsUI
+rm -f /system/priv-app/Ax.apk
+rm -f /system/priv-app/AxUI.apk
+rm -f /system/priv-app/As.apk
+rm -f /system/priv-app/AsUI.apk
+rm -f /system/app/Ax.apk
+rm -f /system/app/AxUI.apk
+rm -f /system/app/As.apk
+rm -f /system/app/AsUI.apk
+rm -f /system/su.d/arisesoundserver
+
+mkdir /tmp/zip
+cd /tmp/zip
+unzip -o "$ZIP"
+
+cp -rf atmos/* /system
+
+if [ -f "/system/etc/audio_effects.conf" ]; then
+  if [ ! -f "/system/vendor/etc/audio_effects.conf" ]; then
+    if [ ! "$ANGL" ] || [ ! "$BULL" ] || [ ! "$FLOU" ]; then
+      cp customize/etc/audio_effects.conf /system/vendor/etc/audio_effects.conf
+      set_perm /system/vendor/etc/audio_effects.conf 0 0 0644
+    else
+      cp customize/vendor/etc/audio_effects.conf /vendor/etc/audio_effects.conf
+      set_perm /vendor/etc/audio_effects.conf 0 0 0644
+    fi
+  elif [ -e "$QCOM" ] && [ ! -f "system/etc/htc_audio_effects.conf" ]; then
+    cp customize/etc/qc/audio_effects.conf /system/vendor/etc/audio_effects.conf
+    set_perm /system/vendor/etc/audio_effects.conf 0 0 0644
+  else
+    cp customize/etc/audio_effects.conf /system/vendor/etc/audio_effects.conf
+    set_perm /system/vendor/etc/audio_effects.conf 0 0 0644
+  fi
+fi
+
+if [ -f "/system/etc/htc_audio_effects.conf" ]; then
+  cp customize/etc/qc/htc_audio_effects.conf /system/etc/htc_audio_effects.conf
+  cp customize/etc/qc/htc_vendor_audio_effects.conf /system/vendor/etc/audio_effects.conf
+  set_perm /system/etc/htc_audio_effects.conf 0 0 0644
+  set_perm /system/vendor/etc/audio_effects.conf 0 0 0644
+fi
+
+if [ -f "/system/vendor/etc/audio_effects.conf" ] && [ ! -e "$QCOM" ]; then
+  cp customize/etc/audio_effects.conf /system/vendor/etc/audio_effects.conf
+  set_perm /system/vendor/etc/audio_effects.conf 0 0 0644
+fi
+
+if [ -f "/system/etc/audio_effects_vendor.conf" ]; then
+  if [ -e "$QCOM" ]; then
+    cp customize/etc/qc/audio_effects_vendor.conf /system/etc/audio_effects_vendor.conf
+  else
+    cp customize/etc/audio_effects_vendor.conf /system/etc/audio_effects_vendor.conf
+  fi
+  set_perm /system/etc/audio_effects_vendor.conf 0 0 0644
+fi
+
+if [ -f "/system/vendor/etc/audio_offload_effects.conf" ]; then
+  if [ -e "$QCOM" ]; then
+    cp customize/etc/qc/audio_offload_effects.conf /system/vendor/etc/audio_offload_effects.conf
+  else
+    cp customize/etc/audio_offload_effects.conf /system/vendor/etc/audio_offload_effects.conf
+  fi
+  set_perm /system/vendor/etc/audio_offload_effects.conf 0 0 0644
+fi
+
+if [ "$ANGL" ] || [ "$BULL" ] || [ "$FLOU" ]; then
+  if [ ! -e "/vendor/lib/libhwdaphal.so" ]; then
+    cp customize/lib/libhwdaphal.so /system/lib/libhwdaphal.so
+    cp customize/lib64/libhwdaphal.so /system/lib64/libhwdaphal.so
+    set_perm /system/lib/libhwdaphal.so 0 0 0644
+    set_perm /system/lib64/libhwdaphal.so 0 0 0644
+  fi
+else
+  if [ ! -e "/system/vendor/lib/libhwdaphal.so" ]; then
+    cp customize/lib/libhwdaphal.so /system/lib/libhwdaphal.so
+    set_perm /system/lib/libhwdaphal.so 0 0 0644
+    if [ -d "$LIB64" ]; then
+      cp customize/lib64/libhwdaphal.so /system/lib64/libhwdaphal.so
+      set_perm /system/lib64/libhwdaphal.so 0 0 0644
+    fi
+  fi
+fi
+
+set_perm_recursive /system/priv-app/Ax 0 0 0755 0644
+set_perm_recursive /system/priv-app/AxUI 0 0 0755 0644
+set_perm_recursive /system/etc/dolby 0 0 0755 0644
+set_perm_recursive /system/su.d/permissive 0 0 0700 0700
+set_perm /system/Atmos_Version.prop 0 0 0644
+set_perm /system/lib/libdlbdapstorage.so 0 0 0644
+set_perm /system/lib/libstagefright_soft_ddpdec.so 0 0 0644
+set_perm /system/lib/soundfx/libswdax.so 0 0 0644
+restorecon /system/su.d/permissive
+
+sleep 1
+
+rm -rf /tmp/zip
+
+if [ "$ANGL" ] || [ "$BULL" ] || [ "$FLOU" ]; then
+  umount /vendor
+fi
+
+umount /system
+
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print "            A.R.I.S.E. Sound Systems™"
+ui_print " "
+ui_print "     Auditory Research in Sound Enhancement™"
+ui_print " "
+ui_print "                @XDA Developers"
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+ui_print " "
+
+sleep 2
+
+exit 0
